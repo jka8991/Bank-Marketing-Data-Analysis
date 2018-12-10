@@ -1,0 +1,15 @@
+<< Binary classification using 'bank marketing data' from UCI machine learning repository >>
+
+  * Visualizations using gglot2
+  * Applied 'mice' package for the data imputation
+  * Model candidates: 
+	- xgboost
+	- lasso
+	- ksvm (radial)
+	- randomforest
+  * Applied random search for tuning parameters
+      - 'mlr' and 'parallelMap' packages are used to run parallel processing
+  * Compared model candidates with multiple train/test splits
+      - used boxplots to visualize performances of each candidate
+      - scaled and re-scaled
+  
