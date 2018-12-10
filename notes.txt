@@ -2,6 +2,9 @@
 
   * Visualizations using gglot2
   * Applied 'mice' package for the data imputation
+	- all customer data can be imputed in two differen ways
+		a. apply the data imputation to whole data set
+		b. apply the data imputation to 'new_customer' and 'old_customer' seperately
   * Model candidates: 
 	- xgboost
 	- lasso
