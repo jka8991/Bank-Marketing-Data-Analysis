@@ -23,10 +23,10 @@ dataset <-
   fread(paste0(file_loc, file_name), stringsAsFactors = TRUE) %>%  
   as.data.frame()
 dataset %>% glimpse()
-##############################
+####################################
 ### 1.a Missing values
-###   Replace 'unknow' to NA
-##############################
+###     Replace 'unknown' with NA
+####################################
 is.na(dataset) %>% sum()      # Number of na's
 colSums(dataset=='unknown')   # Number of 'unknown' values
 
@@ -61,7 +61,7 @@ table(new_customer_data$y)/sum(table(new_customer_data$y))
 
 
 ######################################################################
-### 2. Focus on the Old customer data
+### 2. Focus on old customer data
 ###    Data impuation
 ######################################################################
 old_customer_data %>% glimpse
@@ -83,6 +83,7 @@ aggr_old_imp_data <- aggr(x=old_imp_data, sortVar=TRUE,
 
 ########################################
 ### 2. Some Visualizations
+########################################
 hist_duration <- ggplot(old_imp_data, aes(x=duration)) + 
   geom_histogram(bins=50, col="black", fill="white") +
   labs(title="hist of duration",
@@ -151,7 +152,7 @@ control_random <- makeTuneControlRandom(maxit=50)
 
 
 ############################################################
-### 3a. Models:XGboost
+### 3a. XGboost
 ############################################################
 # create Learner
 xgb_learner <- makeLearner(cl="classif.xgboost", 
@@ -311,7 +312,7 @@ data.frame(xgb = xgb_res$misclassification,
 
 
 ############################################################
-### 4. Model comparisons using random splits
+### 4. Model comparison using random train/test splits
 ############################################################
 # calculate the misclssficiation rate
 mis_error <- function(true_y, pred_y){
@@ -369,9 +370,8 @@ boxplot((res_df), las=2, main="Test Error \n (misclassification rate)")
 boxplot(sqrt(res_df), las=2, main="Test Error \n (sqrt(misclassification rate))")
 
 ##########################################
-# scaled Box plot - misclassificatipn rats
+# scaled Box plot - misclassification rates
 rescaled_res_df <- res_df/apply(X=res_df, MARGIN=1, FUN=min)
-# Box Plot
 par(mfrow=c(1,2))
 boxplot((rescaled_res_df), las=2, 
         main="Misclassification rate \n (Re-scaled)")
