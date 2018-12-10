@@ -9,7 +9,7 @@
 	- randomforest
   * Applied random search for tuning parameters
       - 'mlr' and 'parallelMap' packages are used to run parallel processing
-  * Compared model candidates with multiple train/test splits
+  * Compared model candidates with multiple train/test splits (random)
       - used boxplots to visualize performances of each candidate
-      - scaled and re-scaled
+      - scaled and re-scaled boxplots
   
